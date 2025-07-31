@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import com.mzzclinica.api_clinica.medico.DadosMedico;
 import com.mzzclinica.api_clinica.medico.Medico;
 import com.mzzclinica.api_clinica.repository.MedicoRepository;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -28,6 +30,7 @@ public class MedicoController {
     private final MedicoRepository repository;
 
     @PostMapping
+    @Transactional
     public void cadastrarMedico(@RequestBody @Valid DadosMedico dadosMedico) {
         repository.save(new Medico(dadosMedico));
     }
@@ -37,4 +40,11 @@ public class MedicoController {
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
     
+    @PutMapping()
+    @Transactional
+    public void atualizarMedico(@RequestBody @Valid DadosAtualizacaoMedico dadosMedico) {
+       var medico = repository.getReferenceById(dadosMedico.id());
+       medico.atualizarInformacoes(dadosMedico);
+
+    }
 }
