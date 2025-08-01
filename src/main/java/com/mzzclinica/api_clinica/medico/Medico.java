@@ -28,6 +28,7 @@ import lombok.Setter;
 public class Medico {
     
     public Medico(DadosMedico dadosMedico) {
+        this.ativo = true;
         this.nome = dadosMedico.nome();
         this.email = dadosMedico.email();
         this.crm = dadosMedico.crm();
@@ -49,6 +50,8 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo = true;
+
     public void atualizarInformacoes(DadosAtualizacaoMedico dadosMedico) {
        if (dadosMedico.nome() != null) {
             this.nome = dadosMedico.nome();
@@ -61,5 +64,9 @@ public class Medico {
         
        }
         
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
