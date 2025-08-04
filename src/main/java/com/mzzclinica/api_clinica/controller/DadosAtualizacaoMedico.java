@@ -11,4 +11,11 @@ public record DadosAtualizacaoMedico(
     String telefone, 
     DadosEndereco endereco) {
 
+        public DadosAtualizacaoMedico(@NotNull Long id, String nome, String telefone, DadosEndereco endereco) {
+            this.id = id;
+            this.nome = nome;
+            this.telefone = telefone;
+            this.endereco = endereco;
+        }
+
 }
