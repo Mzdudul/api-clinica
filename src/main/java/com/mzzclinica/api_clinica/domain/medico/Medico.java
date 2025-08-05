@@ -1,8 +1,8 @@
-package com.mzzclinica.api_clinica.medico;
+package com.mzzclinica.api_clinica.domain.medico;
 
 
 import com.mzzclinica.api_clinica.controller.DadosAtualizacaoMedico;
-import com.mzzclinica.api_clinica.endereco.Endereco;
+import com.mzzclinica.api_clinica.domain.endereco.Endereco;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

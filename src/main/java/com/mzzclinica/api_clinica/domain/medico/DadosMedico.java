@@ -1,6 +1,6 @@
-package com.mzzclinica.api_clinica.medico;
+package com.mzzclinica.api_clinica.domain.medico;
 
-import com.mzzclinica.api_clinica.endereco.DadosEndereco;
+import com.mzzclinica.api_clinica.domain.endereco.DadosEndereco;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;

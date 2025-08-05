@@ -1,8 +1,8 @@
 package com.mzzclinica.api_clinica.controller;
 
-import com.mzzclinica.api_clinica.endereco.Endereco;
-import com.mzzclinica.api_clinica.medico.Especialidade;
-import com.mzzclinica.api_clinica.medico.Medico;
+import com.mzzclinica.api_clinica.domain.endereco.Endereco;
+import com.mzzclinica.api_clinica.domain.medico.Especialidade;
+import com.mzzclinica.api_clinica.domain.medico.Medico;
 
 public record DetalhamentoMedico(Long id, String nome, String email, String crm, Especialidade especialidade, Endereco endereco) {
 

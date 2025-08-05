@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.mzzclinica.api_clinica.medico.DadosMedico;
-import com.mzzclinica.api_clinica.medico.Medico;
+import com.mzzclinica.api_clinica.domain.medico.DadosMedico;
+import com.mzzclinica.api_clinica.domain.medico.Medico;
 import com.mzzclinica.api_clinica.repository.MedicoRepository;
 
 import jakarta.transaction.Transactional;
@@ -74,6 +74,7 @@ public class MedicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DetalhamentoMedico> detalharMedico(@PathVariable Long id) {
+        
         var medico = repository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhamentoMedico(medico));
     }

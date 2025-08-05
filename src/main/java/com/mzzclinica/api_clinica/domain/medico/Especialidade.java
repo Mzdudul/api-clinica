@@ -1,4 +1,4 @@
-package com.mzzclinica.api_clinica.medico;
+package com.mzzclinica.api_clinica.domain.medico;
 
 public enum Especialidade {
     ORTPEDIA,

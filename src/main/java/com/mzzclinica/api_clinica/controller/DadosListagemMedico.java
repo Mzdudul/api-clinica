@@ -1,6 +1,6 @@
 package com.mzzclinica.api_clinica.controller;
 
-import com.mzzclinica.api_clinica.medico.Medico;
+import com.mzzclinica.api_clinica.domain.medico.Medico;
 
 public record DadosListagemMedico(Long id, String nome, String email, String telefone, String crm, String especialidade) {
       

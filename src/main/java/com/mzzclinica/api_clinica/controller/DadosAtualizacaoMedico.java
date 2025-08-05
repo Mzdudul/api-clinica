@@ -1,6 +1,6 @@
 package com.mzzclinica.api_clinica.controller;
 
-import com.mzzclinica.api_clinica.endereco.DadosEndereco;
+import com.mzzclinica.api_clinica.domain.endereco.DadosEndereco;
 
 import jakarta.validation.constraints.NotNull;
 
