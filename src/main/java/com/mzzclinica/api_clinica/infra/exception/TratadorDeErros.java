@@ -1,4 +1,4 @@
-package com.mzzclinica.api_clinica.infra;
+package com.mzzclinica.api_clinica.infra.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
