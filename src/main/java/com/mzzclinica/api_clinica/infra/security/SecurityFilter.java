@@ -2,10 +2,11 @@ package com.mzzclinica.api_clinica.infra.security;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.Filter;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
+
+    @Autowired
+    private TokenService tokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -23,6 +27,11 @@ public class SecurityFilter extends OncePerRequestFilter {
     throws ServletException, IOException {   
         var tokenJWT = recuperarToken(request);
 
+        if(tokenJWT != null){
+            var subject = tokenService.getSubject(tokenJWT);
+        }
+
+
          filterChain.doFilter(request, response);   
 
     }
@@ -30,11 +39,13 @@ public class SecurityFilter extends OncePerRequestFilter {
 
 private String recuperarToken(HttpServletRequest request) {
     var authorizationHeader = request.getHeader("Authorization");
-    if(authorizationHeader == null){
-        throw new RuntimeException("Token JWT não enviado no cabeçalho Authorization");
+    if(authorizationHeader != null){
+        return authorizationHeader.replace("Bearer ", "");
     }
-    return authorizationHeader.replace("Bearer ", "");
+    return null;
 }
+
+
 }
 
     
