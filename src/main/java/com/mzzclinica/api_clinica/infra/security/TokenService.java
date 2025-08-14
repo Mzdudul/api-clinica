@@ -15,6 +15,7 @@ import com.mzzclinica.api_clinica.domain.usuario.Usuario;
 
 @Service
 public class TokenService {
+    
 
     @Value("${api.security.token.secret}")
     private String secret;
@@ -23,11 +24,13 @@ public class TokenService {
        
         try {
             var algoritmo = Algorithm.HMAC256(secret);
+            System.out.println("Gerando token JWT para o usuário: " + usuario.getLogin());
             return JWT.create()
                     .withIssuer("API MZZ Clinica")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
+                    
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token JWT", exception);
         }
