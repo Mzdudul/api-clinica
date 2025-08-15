@@ -24,7 +24,7 @@ public class ConsultaController {
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
         agendamentoConsultas.agendarConsulta(dados);
-        return ResponseEntity.ok(new DadosAgendamentoConsulta(null, null, null));
+        return ResponseEntity.ok("Consulta agendada com sucesso");
     }
 
 }
