@@ -24,7 +24,7 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
      Object findAtivoById(Long idMedico);
 
 
-     @Query("SELECT COUNT(c) > 0 FROM Consulta c WHERE c.medico.id = :idMedico AND c.data = :data")
+    
     Object existsByMedicoIdAndData(Long idMedico, LocalDateTime data);
     
 }

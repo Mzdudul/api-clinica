@@ -2,11 +2,13 @@ package com.mzzclinica.api_clinica.domain.consultas.validacoes;
 
 import java.time.DayOfWeek;
 
+import org.springframework.stereotype.Component;
+
 import com.mzzclinica.api_clinica.domain.ValidacaoException;
 import com.mzzclinica.api_clinica.domain.consultas.DadosAgendamentoConsulta;
-
-public class ValidadorHorarioFuncionamentoClinica {
-    public void validarHorarioFuncionamento(DadosAgendamentoConsulta dados) {
+@Component
+public class ValidadorHorarioFuncionamentoClinica implements ValidadorAgendamentoDeConsultas{
+    public void validar(DadosAgendamentoConsulta dados) {
         var dataConsulta = dados.data();
 
         var domingo = dataConsulta.getDayOfWeek().equals(DayOfWeek.SUNDAY);

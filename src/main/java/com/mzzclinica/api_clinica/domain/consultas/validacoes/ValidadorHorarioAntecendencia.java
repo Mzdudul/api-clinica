@@ -3,12 +3,15 @@ package com.mzzclinica.api_clinica.domain.consultas.validacoes;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Component;
+
 import com.mzzclinica.api_clinica.domain.ValidacaoException;
 import com.mzzclinica.api_clinica.domain.consultas.DadosAgendamentoConsulta;
 
-public class ValidadorHorarioAntecendencia {
+@Component
+public class ValidadorHorarioAntecendencia implements ValidadorAgendamentoDeConsultas{
 
-    public void validarAntecedencia(DadosAgendamentoConsulta dados) {
+    public void validar(DadosAgendamentoConsulta dados) {
 
         var dataConsulta = dados.data();
         var agora = LocalDateTime.now();

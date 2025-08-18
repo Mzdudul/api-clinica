@@ -1,9 +1,12 @@
 package com.mzzclinica.api_clinica.domain.consultas;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mzzclinica.api_clinica.domain.ValidacaoException;
+import com.mzzclinica.api_clinica.domain.consultas.validacoes.ValidadorAgendamentoDeConsultas;
 import com.mzzclinica.api_clinica.domain.medico.Medico;
 import com.mzzclinica.api_clinica.domain.paciente.PacienteRepository;
 import com.mzzclinica.api_clinica.repository.ConsultaRepository;
@@ -20,6 +23,9 @@ public class AgendamentoConsultas {
 
     @Autowired
     private PacienteRepository pacienteRepository;
+
+    @Autowired
+    private List<ValidadorAgendamentoDeConsultas> validadores;
 
     public void agendarConsulta(DadosAgendamentoConsulta dados) {
 
